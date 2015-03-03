@@ -4,7 +4,7 @@ import play.api.mvc._
 
 
 /**
- * @author Venice
+ * @author freeism
  * @since 15. 3. 2.
  */
 object CoffeeBeans extends Controller {
