@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                    controllers.Application.index
+GET         /test                controllers.Application.test
+GET         /echo                controllers.Application.echo
+
+# CoffeeBeans
+GET         /open                controllers.CoffeeBeans.open
+GET         /bet                 controllers.CoffeeBeans.bet
+
+# Task
+GET         /tasks               controllers.TaskApplication.tasks
+POST        /tasks               controllers.TaskApplication.newTask
+POST        /tasks/:id/delete    controllers.TaskApplication.deleteTask(id: Long)
+
+#GET   /clients/:id          controllers.Clients.show(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
+
+    
