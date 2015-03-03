@@ -3,19 +3,15 @@ package controllers
 import play.api.mvc._
 
 object Application extends Controller {
+    def index = Action {
+        Ok(views.html.index("Your new application is ready."))
+    }
 
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
+    def test = Action {
+        Ok(views.html.test("Hello World!!!!!"))
+    }
 
-  def test = Action {
-    Ok(views.html.test("Hello World!!!!!"))
-  }
-
-  def echo = Action { request =>
-    Ok("Got request [" + request + "]")
-  }
-
-
-
+    def echo = Action { request =>
+        Ok("Got request [" + request + "]")
+    }
 }

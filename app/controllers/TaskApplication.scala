@@ -1,16 +1,15 @@
 package controllers
 
-import com.sun.xml.internal.bind.v2._
+import play.api.mvc._
 
 /**
  * @author freeism
  * @since 15. 3. 3.
  */
-object TaskApplication {
+object TaskApplication extends Controller {
 	def tasks = TODO
 
 	def newTask = TODO
 
 	def deleteTask(id: Long) = TODO
-
 }
