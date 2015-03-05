@@ -1,5 +1,8 @@
 package controllers
 
+import models._
+import play.api.data.Forms._
+import play.api.data._
 import play.api.mvc._
 
 /**
@@ -7,9 +10,26 @@ import play.api.mvc._
  * @since 15. 3. 3.
  */
 object TaskApplication extends Controller {
-	def tasks = TODO
+	val taskForm = Form(
+		"label" -> nonEmptyText
+	)
 
-	def newTask = TODO
+	def tasks = Action {
+		Ok(views.html.task(Task.all, taskForm))
+	}
 
-	def deleteTask(id: Long) = TODO
+	def newTask = Action { implicit request =>
+		taskForm.bindFromRequest().fold(
+		    errors => BadRequest(views.html.task(Task.all, errors)),
+		    label => {
+			    Task.create(label)
+			    Redirect(routes.TaskApplication.tasks)
+		    }
+		)
+	}
+
+	def deleteTask(id: Long) = Action {
+		Task.delete(id)
+		Redirect(routes.TaskApplication.tasks)
+	}
 }
